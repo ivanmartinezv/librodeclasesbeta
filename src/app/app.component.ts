@@ -24,5 +24,5 @@ import { AuthenticationService } from "./login/shared/authentication.service";
 })
 
 export class AppComponent {
-  
+  public name: string = "ivan";
 }
