@@ -1,7 +1,5 @@
 //(6)Implementamos un login sin backend que lo respalde, por lo tanto hemos creado una versión muy simplificada de un fake backend con los endpoints que necesitamos para hacerlo funcionar.
 
-//La función login nos devuelve un token y el usuario en el body que coincidirá con los parámetros que reciba. Si los parámetros no son correctos devolverá un error. El logout simplemente nos devuelve un true.
-
 import { Injectable } from "@angular/core";
 import {
   HttpRequest,
@@ -13,11 +11,16 @@ import {
 } from "@angular/common/http";
 import { Observable, of, throwError } from "rxjs";
 import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+//importar objeto User
 import { User } from "../models/user.model";
+//importar usuarios preseteados para buscar el del login
 import { USERS } from "../mocks/mock-users";
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+  public url_Login: string = "/api/authenticate/login";
+  public url_Logout: string = "/api/authenticate/logout";
+
   constructor() {}
 
   intercept(
@@ -34,39 +37,56 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           mergeMap(() => {
             // fake authenticate api end point
             if (
-              request.url.endsWith("/api/authenticate/login") &&
+              request.url.endsWith(this.url_Login) &&
               request.method === "POST"
             ) {
-              let params = request.body;
+              console.log(request);
+              //primero captura el body de la request con las credenciales
+              let params = request.body; //Objeto Credencial
 
-              // check user credentials and return fake jwt token if valid
-              let found: User = USERS.find((user: User) => {
+              //(1.A) La función LOGIN revisa las credenciales de usuario, devuelve un token (si son validas) y el usuario en el body que coincidirá con los parámetros que reciba.
+
+              //segundo recorre el json de USERS buscando el username
+              let encontrado: User = USERS.find((user: User) => {
+                /*if (params.username === user.username){
+                  console.log("username encontrado");
+                  y retorna el User
+                }*/
                 return params.username === user.username;
               });
-              if (found) {
-                if (params.password === found.password) {
+              //tercero, si encuentra el username
+              if (encontrado) {
+                //si no es NULL
+                //si encuentra el username, tiene que matchear la contraseña
+                if (params.password === encontrado.password) {
+                  //SI LA CONTRASEÑA COINCIDE
+                  //funcion que Genera token
+                  let generaToken: string = "fake-token-jwt";
                   return of(
                     new HttpResponse({
                       status: 200,
-                      body: { token: "fake-token-jwt", user: found }
+                      body: { token: generaToken, user: encontrado }
                     })
                   );
                 } else {
+                  //SI LA CONTRASEÑA NO COINCIDE, devuelve error
                   return throwError({
                     code: 2,
-                    message: "The password does not match "
+                    message: "La contraseña no coincide."
                   });
                 }
               } else {
+                //SI EL USUARIO NO FUE ENCONTRADO, devuelve error
                 return throwError({
                   code: 1,
-                  message: "Username does not exists"
+                  message: "El username no existe."
                 });
               }
             }
 
+            //El logout simplemente nos devuelve un true.
             if (
-              request.url.endsWith("/api/authenticate/logout") &&
+              request.url.endsWith(this.url_Logout) &&
               request.method === "POST"
             ) {
               return of(new HttpResponse({ status: 200, body: true }));

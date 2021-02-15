@@ -22,7 +22,6 @@ import { AuthenticationService } from "./login/shared/authentication.service";
   styleUrls: ["./app.component.css"],
   providers: [AuthenticationService]
 })
-
 export class AppComponent {
-  public name: string = "ivan";
+  public name: string = "ivann";
 }

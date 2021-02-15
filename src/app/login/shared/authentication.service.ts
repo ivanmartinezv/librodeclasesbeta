@@ -2,7 +2,7 @@
 
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { LoginObject } from "./login-object.model";
+import { Credencial } from "./login-object.model";
 import { Session } from "../../core/models/session.model";
 
 /*import { Http, Response } from "@angular/http";*/
@@ -18,19 +18,30 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   //La petición de login nos devolverá un observable de tipo Session que almacenaremos después.
-  login(loginObj: LoginObject): Observable<Session> {
+  login(credencialesLogin: Credencial): Observable<Session> {
     //return this.http.post(this.basePath + "login", loginObj).map(this.extractData);
-    return this.http.post<Session>(this.basePath + "login", loginObj);
+    let login_object: any = this.http.post<Session>(
+      this.basePath + "login", //token?
+      credencialesLogin //user?
+    );
+    //console.log(login_object);//que es esto?
+    return login_object;
   }
 
   //El logout nos devolverá un observable de tipo Boolean.
   logout(): Observable<Boolean> {
     //return this.http.post(this.basePath + "logout", {}).map(this.extractData);
-    return this.http.post<Boolean>(this.basePath + "logout", {});
+    let logout_object: any = this.http.post<Boolean>(
+      this.basePath + "logout",
+      {} //vacio
+    );
+    //console.log(logout_object);
+    return logout_object;
   }
 
+  /*metodo usado con el antiguo http
   private extractData(res: Response) {
     let body = res.json();
     return body;
-  }
+  }*/
 }
