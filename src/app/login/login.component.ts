@@ -68,9 +68,16 @@ export class LoginComponent {
     }
   }
 
+  //este metodo redirige a la vista /home
   private correctLogin(data: Session) {
-    console.log(data);
     this.storageService.setCurrentSession(data);
-    this.router.navigate(["/home"]);
+    if (data.user.rol == "Director") {
+      console.log("Home de Director");
+      this.router.navigate(["/home"]);
+    }
+    if (data.user.rol == "Profesor") {
+      console.log("Home de Profesor");
+      this.router.navigate(["/home"]);
+    }
   }
 }

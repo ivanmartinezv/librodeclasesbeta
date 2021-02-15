@@ -1,5 +1,15 @@
 <!--(9)-->
-<h1>Hola {{user.name}}</h1>
-<button md-raised-button type="button" (click)="logout()">Log Out</button>
+<h3>Bienvenido {{user.rol}} {{user.name}} {{user.surname}}</h3>
+<button md-raised-button type="button" (click)="logout()">Cerrar sesión</button>
 
 <h2>{{polo}}</h2>
+
+<!--<h1 *ngIf="this.rol == 'Director'">director1</h1>
+<h1 *ngIf="this.rol == 'Profesor'">profesor1</h1>-->
+
+<h1 *ngIf="esDirector()">director2</h1>
+GESTIONAR PROFESORES
+
+
+<h1 *ngIf="esProfesor()">profesor2</h1>
+VER LIBROS DE CLASES

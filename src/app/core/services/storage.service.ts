@@ -15,13 +15,14 @@ export class StorageService {
     this.currentSession = this.loadSessionData();
   }
 
+  //metodo que almacena la sesion actual
   setCurrentSession(session: Session): void {
     this.currentSession = session;
-    this.localStorageService.setItem("currentUser", JSON.stringify(session));
+    this.localStorageService.setItem("usuarioActual", JSON.stringify(session));
   }
 
   loadSessionData(): Session {
-    var sessionStr = this.localStorageService.getItem("currentUser");
+    var sessionStr = this.localStorageService.getItem("usuarioActual");
     return sessionStr ? <Session>JSON.parse(sessionStr) : null;
   }
 
@@ -30,11 +31,11 @@ export class StorageService {
   }
 
   removeCurrentSession(): void {
-    this.localStorageService.removeItem("currentUser");
+    this.localStorageService.removeItem("usuarioActual");
     this.currentSession = null;
   }
 
-  getCurrentUser(): User {
+  getUsuarioActual(): User {
     var session: Session = this.getCurrentSession();
     return session && session.user ? session.user : null;
   }

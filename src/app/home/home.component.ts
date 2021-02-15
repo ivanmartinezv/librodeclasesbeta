@@ -7,10 +7,12 @@ import { AuthenticationService } from "../login/shared/authentication.service";
 
 @Component({
   selector: "home",
-  templateUrl: "home.component.html"
+  templateUrl: "home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent {
-  public user: User;
+  public user: User; //usuario actual
+  public rol: string; //rol del usuario
   public polo: string = "polo peludo";
 
   constructor(
@@ -19,7 +21,28 @@ export class HomeComponent {
   ) {}
 
   ngOnInit() {
-    this.user = this.storageService.getCurrentUser();
+    this.user = this.storageService.getUsuarioActual();
+    //console.log(this.user);
+    this.rol = this.user.rol;
+    //console.log("rol: " + this.rol);
+  }
+
+  public esDirector(): boolean {
+    //console.log(this.user.rol+"+");
+    if (this.rol == "Director") {
+      //console.log("es director");
+      return true;
+    }
+    return false;
+  }
+
+  public esProfesor(): boolean {
+    //console.log(this.user.rol+"-");
+    if (this.rol == "Profesor") {
+      //console.log("es profesor");
+      return true;
+    }
+    return false;
   }
 
   public logout(): void {
