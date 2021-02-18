@@ -75,13 +75,13 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     Routing,
     BrowserAnimationsModule,
     CoreModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     //MdInputModule,
     //MdButtonModule,
     //MdCardModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
+    /*ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
-    })
+    })*/
   ],
   providers: [],
   bootstrap: [AppComponent],
