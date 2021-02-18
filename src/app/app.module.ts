@@ -31,6 +31,8 @@ import { Routing } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
 
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+
 //import { RouterModule } from '@angular/router';
 //import { CommonModule }      from '@angular/common';
 
@@ -52,7 +54,7 @@ import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, NavbarComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -71,6 +73,6 @@ import { ServiceWorkerModule } from "@angular/service-worker";
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

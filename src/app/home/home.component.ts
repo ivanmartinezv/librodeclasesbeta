@@ -1,3 +1,13 @@
+/*import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+})
+
+export class HomeComponent {}*/
+
 //(10) Componente «home» para comprobar la funcionalidad de la autenticación y demostrar cómo utilizar el StorageService para obtener el usuario. También podemos hacer un logout.
 
 import { Component } from "@angular/core";
