@@ -3,7 +3,7 @@ import { User } from "../../shared/models/user.interface";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 //import { auth } from "firebase/app";
-import { auth } from "../../../../../node_modules/firebase";
+//import { auth } from "../../../../../node_modules/firebase";
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import {
@@ -11,6 +11,7 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 //import { RoleValidator } from "@auth/helpers/roleValidator";
+import { RoleValidator } from "../helpers/roleValidator";
 
 @Injectable({ providedIn: "root" })
 export class AuthService extends RoleValidator {
@@ -30,10 +31,12 @@ export class AuthService extends RoleValidator {
 
   async loginGoogle(): Promise<User> {
     try {
-      const { user } = await this.afAuth.signInWithPopup(
+      let user: any;
+      /*const { user } = await this.afAuth.signInWithPopup(
         new auth.GoogleAuthProvider()
       );
       this.updateUserData(user);
+      return user;*/
       return user;
     } catch (error) {
       console.log(error);
