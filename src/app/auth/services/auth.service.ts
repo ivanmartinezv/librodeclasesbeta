@@ -1,14 +1,16 @@
-import { User } from "@shared/models/user.interface";
+//import { User } from "@shared/models/user.interface";
+import { User } from "../../shared/models/user.interface";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { auth } from "firebase/app";
+//import { auth } from "firebase/app";
+import { auth } from "../../../../../node_modules/firebase";
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import {
   AngularFirestore,
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
-import { RoleValidator } from "@auth/helpers/roleValidator";
+//import { RoleValidator } from "@auth/helpers/roleValidator";
 
 @Injectable({ providedIn: "root" })
 export class AuthService extends RoleValidator {
