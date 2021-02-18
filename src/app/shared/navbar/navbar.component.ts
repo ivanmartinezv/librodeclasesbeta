@@ -16,6 +16,10 @@ export class NavbarComponent {
 
   constructor(public _authService: AuthService, private router: Router) {}
 
+  ngOnInit() {
+    console.log("navbar corriendo");
+  }
+
   /*async onLogout() {
     try {
       await this._authService.logout();

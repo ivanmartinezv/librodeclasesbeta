@@ -18,13 +18,9 @@ export class AppModule {}
 
 //(15) Es el módulo principal de la aplicación. En este módulo incluimos todo lo necesario para que la aplicación funcione correctamente. También añadimos el Core module que creamos para fragmentar la aplicación.
 
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 //import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
 
-import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CoreModule } from "./core/core.module";
 import { Routing } from "./app.routing";
@@ -34,7 +30,6 @@ import { HomeComponent } from "./home/home.component";
 import { LoginComponent0 } from "./login/login.component";
 
 //segundo login incluido en el navbar
-import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 
@@ -55,8 +50,34 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
-import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
+
+/*---*/
+import { environment } from "../environments/environment";
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+import { AppRoutingModule } from "./app-routing.module"; //icono verde
+
+import { AngularFireAuthModule } from "@angular/fire/auth";
+//import { AngularFireModule } from "angularfire2";//antiguo
+import { AngularFireModule } from "@angular/fire";
+//import { AngularFirestoreModule } from "angularfire2/firestore";//antiguo
+import { AngularFirestoreModule } from "@angular/fire/firestore"; //nuevo STORE
+import { AngularFireStorageModule, BUCKET } from "@angular/fire/storage"; //STORAGE
+//import { SendEmailComponent } from "./auth/send-email/send-email.component";
+
+//import { AuthService } from "@auth/services/auth.service";//antiguo
+import { AuthService } from "./auth/services/auth.service"; //nuevo
+
+/*
+import { CanSuscriptorGuard } from "@app/auth/guards/can-suscriptor.guard";
+import { CanAdminGuard } from "@auth/guards/can-admin.guard";
+import { CanEditGuard } from "@auth/guards/can-edit.guard";
+*/
 
 @NgModule({
   declarations: [
@@ -69,6 +90,16 @@ import { ServiceWorkerModule } from "@angular/service-worker";
   ],
   imports: [
     BrowserModule,
+    //AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(
+      environment.firebaseConfig,
+      "librodeclasesbeta"
+    ),
+
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+
+    AngularFirestoreModule,
     FormsModule,
     //HttpModule,
     HttpClientModule,
@@ -83,7 +114,10 @@ import { ServiceWorkerModule } from "@angular/service-worker";
       enabled: environment.production
     })*/
   ],
-  providers: [],
+  providers: [
+    AuthService
+    /*AngularFirestore*/
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

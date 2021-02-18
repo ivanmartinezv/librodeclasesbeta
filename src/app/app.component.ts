@@ -16,13 +16,26 @@ export class AppComponent {
 import { Component } from "@angular/core";
 import { AuthenticationService } from "./login/shared/authentication.service";
 
+//import { AngularFirestore } from "angularfire2/firestore";//antiguo
+import { AngularFirestore } from "@angular/fire/firestore"; //nuevo
+//import { AngularFireDatabase } from "angularfire2/database";//antiguo
+import { AngularFireDatabase } from "@angular/fire/database"; //nuevo
+
+//import { Observable } from "rxjs/Observable";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  providers: [AuthenticationService]
+  providers: [AuthenticationService, AngularFirestore, AngularFireDatabase]
 })
 export class AppComponent {
   public name: string = "ivann";
   public title = "login OP";
+  constructor(db: AngularFirestore) {
+    console.log("appcomponent running from constructor");
+  }
+  ngOnInit() {
+    console.log("appcomponent running from ngOnInit");
+  }
 }

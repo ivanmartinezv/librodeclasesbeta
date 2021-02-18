@@ -4,10 +4,16 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth"; //ok
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
+
+//angularfirestore para el STORE de datos
 import {
   AngularFirestore,
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
+//angulardatabase para el BDD de datos
+//import { AngularFireDatabase } from "angularfire2/database";//antiguo
+import { AngularFireDatabase } from "@angular/fire/database"; //nuevo
+
 //import { RoleValidator } from "@auth/helpers/roleValidator";
 import { RoleValidator } from "../helpers/roleValidator"; //ok
 
