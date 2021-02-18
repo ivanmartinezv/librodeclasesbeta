@@ -2,8 +2,15 @@
 import { User } from "../../shared/models/user.interface";
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+
+//problema al importar
 //import { auth } from "firebase/app";
 //import { auth } from "../../../../../node_modules/firebase";
+import * as firebase from "firebase/app";
+import "@firebase/firestore";
+import "@firebase/auth";
+//acaba problema
+
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import {
@@ -31,12 +38,10 @@ export class AuthService extends RoleValidator {
 
   async loginGoogle(): Promise<User> {
     try {
-      let user: any;
-      /*const { user } = await this.afAuth.signInWithPopup(
+      const { user } = await this.afAuth.signInWithPopup(
         new auth.GoogleAuthProvider()
       );
       this.updateUserData(user);
-      return user;*/
       return user;
     } catch (error) {
       console.log(error);
