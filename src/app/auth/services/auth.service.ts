@@ -1,7 +1,15 @@
 //import { User } from "@shared/models/user.interface";
 import { User } from "../../shared/models/user.interface";
 import { Injectable } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireAuth } from "@angular/fire/auth"; //ok
+import { Observable, of } from "rxjs";
+import { switchMap } from "rxjs/operators";
+import {
+  AngularFirestore,
+  AngularFirestoreDocument
+} from "@angular/fire/firestore";
+//import { RoleValidator } from "@auth/helpers/roleValidator";
+import { RoleValidator } from "../helpers/roleValidator"; //ok
 
 //problema al importar
 //import { auth } from "firebase/app";//antiguo
@@ -12,19 +20,10 @@ import { AngularFireAuth } from "@angular/fire/auth";
 //import * as firebase from "firebase/app";
 //import "@firebase/firestore";
 //import "@firebase/auth";
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
 //acaba problema
-
-import { Observable, of } from "rxjs";
-import { switchMap } from "rxjs/operators";
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from "@angular/fire/firestore";
-//import { RoleValidator } from "@auth/helpers/roleValidator";
-import { RoleValidator } from "../helpers/roleValidator";
+//import firebase from "firebase/app";
+//import "firebase/firestore";
+//import "firebase/auth";
 
 @Injectable({ providedIn: "root" })
 export class AuthService extends RoleValidator {
@@ -43,16 +42,16 @@ export class AuthService extends RoleValidator {
   }
 
   async loginGoogle() /*: Promise<User>*/ {
-    try {
-      /*const { user } = await this.afAuth.signInWithPopup(
+    console.log("async loginGoogle()");
+    /*try {
+      const { user } = await this.afAuth.signInWithPopup(
         new auth.GoogleAuthProvider()
-      );*/
-      //this.updateUserData(user);
-      //return user;
-      let suma = 1 + 2;
+      );
+      this.updateUserData(user);
+      return user;
     } catch (error) {
       console.log(error);
-    }
+    }*/
   }
 
   async resetPassword(email: string): Promise<void> {
@@ -73,7 +72,7 @@ export class AuthService extends RoleValidator {
         email,
         password
       );
-      //this.updateUserData(user);
+      this.updateUserData(user);
       return user;
     } catch (error) {
       console.log(error);
