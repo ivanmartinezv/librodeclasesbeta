@@ -29,7 +29,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CoreModule } from "./core/core.module";
 import { Routing } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from "./login/login.component";
+
+//primer login
+import { LoginComponent0 } from "./login/login.component";
+//segundo logon
+import { LoginComponent } from "./auth/login/login.component";
 
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 
@@ -54,7 +58,13 @@ import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent0,
+    HomeComponent,
+    NavbarComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

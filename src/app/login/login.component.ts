@@ -21,7 +21,7 @@ import { Session } from "../core/models/session.model";
   templateUrl: "login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent {
+export class LoginComponent0 {
   //formulario de login
   public loginForm: FormGroup; //[formGroup]="loginForm"
   //por defecto no hay datos enviados

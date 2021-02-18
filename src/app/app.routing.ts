@@ -4,13 +4,17 @@
 
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from "./login/login.component";
+//primer login
+import { LoginComponent0 } from "./login/login.component";
 import { AuthorizatedGuard } from "./core/guards/authorizated.guard";
+//segundo login
+import { LoginComponent } from "./auth/login/login.component";
 
 const appRoutes: Routes = [
   //ruta vacia lleva a home
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent, canActivate: [AuthorizatedGuard] },
+  //  { path: "login", component: LoginComponent0 },
   { path: "login", component: LoginComponent },
   { path: "**", redirectTo: "/home" }
 ];
