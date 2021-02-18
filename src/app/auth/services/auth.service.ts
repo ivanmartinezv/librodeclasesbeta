@@ -1,23 +1,23 @@
-import { User } from '@shared/models/user.interface';
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { User } from "@shared/models/user.interface";
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { auth } from "firebase/app";
+import { Observable, of } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
-import { RoleValidator } from '@auth/helpers/roleValidator';
+  AngularFirestoreDocument
+} from "@angular/fire/firestore";
+import { RoleValidator } from "@auth/helpers/roleValidator";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class AuthService extends RoleValidator {
   public user$: Observable<User>;
 
   constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
     super();
     this.user$ = this.afAuth.authState.pipe(
-      switchMap((user) => {
+      switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }
@@ -95,7 +95,7 @@ export class AuthService extends RoleValidator {
       emailVerified: user.emailVerified,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      role: 'ADMIN',
+      role: "ADMIN"
     };
 
     return userRef.set(data, { merge: true });

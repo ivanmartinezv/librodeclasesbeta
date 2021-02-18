@@ -1,6 +1,8 @@
 import { FormGroup, FormControl } from "@angular/forms";
 import { Component } from "@angular/core";
 
+//https://www.youtube.com/watch?v=rwIOw7f0RHk&list=PL_9MDdjVuFjEJXpRgrCMvxKHgdtdk6AOJ&t=0s&ab_channel=DominiCode  37:20
+
 import { AuthService } from "@auth/services/auth.service";
 import { Router } from "@angular/router";
 import { User } from "@app/shared/models/user.interface";
