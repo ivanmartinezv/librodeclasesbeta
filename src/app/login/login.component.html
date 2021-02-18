@@ -1,11 +1,15 @@
 <!--(7) Template con el formulario (simple) que utiliza los reactive forms. Por otro lado, integramos diferentes validaciones de los campos.-->
 
+<br>
+hola
+<button class="btn btn-md btn-primary">Hola</button>
+<button class="btn btn-lg btn-primary">Hola</button>
+
 <div class="aligner">
 	<md-card class="aligner-center-item">
 		<md-card-title>
-			Formulario de Login
+			<h3>Formulario de Login</h3>
 		</md-card-title>
-		<br><br>
 		<md-card-content>
 			<form id="login-form" #lForm="ngForm" [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
 				<!--USERNAME-->
