@@ -4,11 +4,17 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 //problema al importar
-//import { auth } from "firebase/app";
+//import { auth } from "firebase/app";//antiguo
+//import { auth } from "firebase";
+
 //import { auth } from "../../../../../node_modules/firebase";
-import * as firebase from "firebase/app";
-import "@firebase/firestore";
-import "@firebase/auth";
+//import firebase from "firebase";
+//import * as firebase from "firebase/app";
+//import "@firebase/firestore";
+//import "@firebase/auth";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 //acaba problema
 
 import { Observable, of } from "rxjs";
@@ -36,13 +42,14 @@ export class AuthService extends RoleValidator {
     );
   }
 
-  async loginGoogle(): Promise<User> {
+  async loginGoogle() /*: Promise<User>*/ {
     try {
-      const { user } = await this.afAuth.signInWithPopup(
+      /*const { user } = await this.afAuth.signInWithPopup(
         new auth.GoogleAuthProvider()
-      );
-      this.updateUserData(user);
-      return user;
+      );*/
+      //this.updateUserData(user);
+      //return user;
+      let suma = 1 + 2;
     } catch (error) {
       console.log(error);
     }
@@ -60,13 +67,15 @@ export class AuthService extends RoleValidator {
     return (await this.afAuth.currentUser).sendEmailVerification();
   }
 
-  async login(email: string, password: string): Promise<User> {
+  async login(/*email: string, password: string*/): Promise<User> {
+    let email = "colo";
+    let password = "colo";
     try {
       const { user } = await this.afAuth.signInWithEmailAndPassword(
         email,
         password
       );
-      this.updateUserData(user);
+      //this.updateUserData(user);
       return user;
     } catch (error) {
       console.log(error);
@@ -105,7 +114,7 @@ export class AuthService extends RoleValidator {
       emailVerified: user.emailVerified,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      role: "ADMIN"
+      rol: "ADMIN"
     };
 
     return userRef.set(data, { merge: true });
