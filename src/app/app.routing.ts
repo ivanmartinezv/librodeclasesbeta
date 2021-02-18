@@ -1,6 +1,6 @@
-//(14) En el router definimos las diferentes rutas de la aplicación, estas están asociadas a un componente. 
-//Tenemos dos rutas que nos dirigen a la /home en caso de que la ruta que se ha buscado esté vacía o no definida. 
-//El acceso a home está protegido mediante la Guard que comentábamos antes. 
+//(14) En el router definimos las diferentes rutas de la aplicación, estas están asociadas a un componente.
+//Tenemos dos rutas que nos dirigen a la /home en caso de que la ruta que se ha buscado esté vacía o no definida.
+//El acceso a home está protegido mediante la Guard que comentábamos antes.
 //Por lo tanto, si ponemos una ruta desconocida y no estamos logueados nos redirigirá al /login.
 
 import { RouterModule, Routes } from "@angular/router";

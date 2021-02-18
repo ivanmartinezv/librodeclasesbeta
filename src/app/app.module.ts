@@ -32,10 +32,11 @@ import { HomeComponent } from "./home/home.component";
 
 //primer login
 import { LoginComponent0 } from "./login/login.component";
-//segundo logon
-import { LoginComponent } from "./auth/login/login.component";
 
+//segundo login incluido en el navbar
 import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
 
 //import { RouterModule } from '@angular/router';
 //import { CommonModule }      from '@angular/common';
@@ -63,7 +64,8 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     LoginComponent0,
     HomeComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
