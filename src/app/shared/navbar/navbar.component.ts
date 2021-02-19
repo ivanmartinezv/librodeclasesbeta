@@ -25,6 +25,7 @@ export class NavbarComponent {
 
   onLogout() {
     console.log("logout");
+    //esta wea deberia modificarse el dia 19 de febrero
   }
 
   /*async onLogout() {
