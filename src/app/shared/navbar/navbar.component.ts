@@ -12,12 +12,19 @@ import { User } from "../models/user.interface";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent {
+  public user$: Observable<User>;
   //public user$: Observable<User> = this._authService.afAuth.user;
+
+  public login: any;
 
   constructor(public _authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     console.log("navbar corriendo");
+  }
+
+  onLogout() {
+    console.log("logout");
   }
 
   /*async onLogout() {
