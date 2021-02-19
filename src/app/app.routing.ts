@@ -15,9 +15,9 @@ const appRoutes: Routes = [
     path: "home",
     component: HomeComponent /*, canActivate: [AuthorizatedGuard]*/
   },
-  //{ path: "login", component: LoginComponent0 },
+  //{ path: "login", component: LoginComponent0 },//login antiguo solo loggea datos estaticos
   { path: "login", component: LoginComponent },
-  /{ path: "register", component: RegisterComponent },
+  { path: "register", component: RegisterComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", redirectTo: "/home" }
 ];
