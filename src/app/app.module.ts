@@ -62,9 +62,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module"; //icono verde
 
-import { AngularFireAuthModule } from "@angular/fire/auth";
 //import { AngularFireModule } from "angularfire2";//antiguo
-import { AngularFireModule } from "@angular/fire";
+import { AngularFireModule } from "@angular/fire"; //INICIALIZAR CONEXION CON FIREBASE
+import { AngularFireAuthModule } from "@angular/fire/auth"; //MODULO DE AUTENTICACIONES
+
 //import { AngularFirestoreModule } from "angularfire2/firestore";//antiguo
 import { AngularFirestoreModule } from "@angular/fire/firestore"; //nuevo STORE
 import { AngularFireStorageModule, BUCKET } from "@angular/fire/storage"; //STORAGE
@@ -90,23 +91,23 @@ import { CanEditGuard } from "@auth/guards/can-edit.guard";
   ],
   imports: [
     BrowserModule,
+    Routing,
+    //AppRoutingModule,
+    ReactiveFormsModule,
     //AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule.initializeApp(
       environment.firebaseConfig,
       "librodeclasesbeta"
     ),
-
     AngularFireAuthModule,
+    //...
     AngularFireStorageModule,
-
     AngularFirestoreModule,
     FormsModule,
     //HttpModule,
     HttpClientModule,
-    Routing,
     BrowserAnimationsModule,
-    CoreModule,
-    ReactiveFormsModule
+    CoreModule
     //MdInputModule,
     //MdButtonModule,
     //MdCardModule,

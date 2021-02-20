@@ -14,6 +14,7 @@ import { User } from "../../shared/models/user.interface";
 export class RegisterComponent {
   public titulo: string = "formulario de registro";
 
+  //objeto del formulario que captura credenciales
   registerForm = new FormGroup({
     email: new FormControl(""),
     password: new FormControl("")
